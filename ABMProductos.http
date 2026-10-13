@@ -1,0 +1,73 @@
+@host = https://localhost:7406
+
+### Listar todos
+GET {{host}}/api/products
+
+### Uno por id
+GET {{host}}/api/products/3
+
+### Uno que no existe (404)
+GET {{host}}/api/products/999
+
+### Buscar por nombre
+GET {{host}}/api/products/search?name=tecla
+
+### Buscar sin coincidencias (200 con lista vacía)
+GET {{host}}/api/products/search?name=zzz
+
+### Buscar sin texto (400)
+GET {{host}}/api/products/search?name=
+
+### Estadísticas
+GET {{host}}/api/products/stats
+
+### Crear uno válido (201)
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Parlantes",
+  "price": 12000
+}
+
+### Crear con datos inválidos (400)
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+  "name": "",
+  "price": -100
+}
+
+### Crear con nombre repetido (409)
+POST {{host}}/api/products
+Content-Type: application/json
+
+{
+  "name": "Webcam HD",
+  "price": 100
+}
+
+### Actualizar (204)
+PUT {{host}}/api/products/1
+Content-Type: application/json
+
+{
+  "name": "Mouse gamer",
+  "price": 4500
+}
+
+### Actualizar uno que no existe (404)
+PUT {{host}}/api/products/999
+Content-Type: application/json
+
+{
+  "name": "Otro",
+  "price": 50
+}
+
+### Eliminar (204)
+DELETE {{host}}/api/products/2
+
+### Eliminar el mismo otra vez (404)
+DELETE {{host}}/api/products/2

@@ -66,6 +66,22 @@ Content-Type: application/json
   "price": 50
 }
 
+### Pre parcial, ejercicio 5: el id del body se ignora (204, modifica el 1)
+PUT {{host}}/api/products/1
+Content-Type: application/json
+
+{
+  "id": 999,
+  "name": "Teclado",
+  "price": 45000
+}
+
+### Pre parcial, ejercicio 5: comprobar que cambió el 1
+GET {{host}}/api/products/1
+
+### Pre parcial, ejercicio 5: comprobar que el 999 sigue sin existir (404)
+GET {{host}}/api/products/999
+
 ### Eliminar (204)
 DELETE {{host}}/api/products/2
 

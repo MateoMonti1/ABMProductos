@@ -62,6 +62,25 @@ namespace ABMProductos.Migrations
                         });
                 });
 
+            modelBuilder.Entity("ABMProductos.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
             modelBuilder.Entity("ABMProductos.Entities.Product", b =>
                 {
                     b.HasOne("ABMProductos.Entities.Category", "Category")

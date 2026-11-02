@@ -8,6 +8,7 @@ public class ABMProductosContext : DbContext
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Category> Categories { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public ABMProductosContext(DbContextOptions<ABMProductosContext> options) : base(options)
     {
